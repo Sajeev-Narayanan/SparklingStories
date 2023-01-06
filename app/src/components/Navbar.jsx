@@ -9,7 +9,7 @@ const Navebar = () => {
   }
   
   return (
-    <div className='h-20 px-8  bg-white'>
+    <div className='h-20 px-8  bg-white top-0 sticky shadow-md'>
       <div className='flex items-center h-20 max-w-[1240px] mx-auto justify-between'>
       <h1 className='w-full text-3xl font-bold '>LOGO</h1>
       <ul className='hidden md:flex'>

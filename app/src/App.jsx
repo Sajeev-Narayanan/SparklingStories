@@ -1,6 +1,12 @@
 import React from 'react'
 
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
 import './App.css'
+import Login from './pages/Login';
+import Providers from './pages/Providers';
+import Signup from './pages/Signup';
+import SingleProvider from './pages/SingleProvider';
 import UserLandingPage from './pages/UserLandingPage'
 
 
@@ -8,9 +14,15 @@ function App() {
   
 
   return (
-    <div className="App">
-      <UserLandingPage/>
-    </div>
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<UserLandingPage />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="providers" element={<Providers />} />
+        <Route path="provider" element={<SingleProvider />} />
+      </Routes>
+      </BrowserRouter>
   )
 }
 
