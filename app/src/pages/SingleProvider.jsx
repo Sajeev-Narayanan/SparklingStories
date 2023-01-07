@@ -3,19 +3,16 @@ import Navebar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ServicesCard from '../components/ServicesCard'
 import GalaryCard from '../components/GalaryCard'
+import { useNavigate } from 'react-router-dom'
 
-// const element = document.querySelector("#container");
-
-// element.addEventListener('wheel', (event) => {
-//   event.preventDefault();
-
-//   element.scrollBy({
-//     left: event.deltaY < 0 ? -30 : 30,
-    
-//   });
-// });
 
 const SingleProvider = () => {
+
+
+const navigate = useNavigate()
+const buttonhandle = () => {
+  navigate('/chat')
+ }
   return (
     <div>
           <Navebar />
@@ -62,7 +59,7 @@ const SingleProvider = () => {
           <p className='text-center'><a href="mailto:example@gmail.com">example@gmail.com</a></p>
           <p className='text-center'><a href="tel:1234567891">8547022049</a></p>
 
-          <button className='uppercase w-[160px] h-[60px] mt-10 mb-10 text-white text-xl font-semibold shadow-2xl hover:shadow-black hover:bg-green-800 duration-300 bg-green-700 rounded-full'>Chat with us</button>
+          <button onClick={buttonhandle} className='uppercase w-[160px] h-[60px] mt-10 mb-10 text-white text-xl font-semibold shadow-2xl hover:shadow-black hover:bg-green-800 duration-300 bg-green-700 rounded-full'>Chat with us</button>
         </div>
         
       </div>

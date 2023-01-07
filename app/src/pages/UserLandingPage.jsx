@@ -3,18 +3,26 @@ import Navbar from '../components/Navbar'
 import Banner from '../components/Banner'
 import ServiceCard from '../components/ServiceCard'
 import Footer from '../components/Footer'
+import { useNavigate } from 'react-router-dom'
+
 
 
 
 const UserLandingPage = () => {
+  const navigate = useNavigate()
+  const serviceClickHandler = () => {
+    navigate('/providers')
+    
+  }
   return (
     <div>
-          <Navbar/>
+      <Navbar />
+     
       <Banner />
-      <div className='w-full'>
+      <div id='services' className='w-full pt-40'>
       <h1 className='uppercase font-Volkhov m-7 text-2xl md:text-4xl lg:text-5xl text-center'>services</h1>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-[1300px] mx-auto'>
-        <ServiceCard url="../../public/serviceImages/bride-groom-getting-married_52683-32275.png" text="WEDDING PLANNERS"/>
+        <ServiceCard serviceClick={serviceClickHandler} url="../../public/serviceImages/bride-groom-getting-married_52683-32275.png" text="WEDDING PLANNERS"/>
         <ServiceCard url="../../public/serviceImages/business-conference-illustration-with-speaker-stage-audience-cartoon-characters-scientific-presentation-academic-symposium-professional-briefing_575670-644.png" text="PERSONAL EVENTS"/>
         <ServiceCard url="../../public/serviceImages/flat-design-people-business-training_23-2148903887.png" text="COMMERCIAL EVENTS"/>
         <ServiceCard url="../../public/serviceImages/cartoon-kids-birthday-party_23-2149000579.png" text="BIRTHDAY PARTY" />
