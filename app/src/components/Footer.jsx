@@ -4,12 +4,12 @@ import {GrSend} from 'react-icons/gr'
 
 const Footer = () => {
   return (
-      <div className='grid grid-col md:grid-cols-3 w-full h-auto bg-[#303030] p-12'>
+      <div className='grid grid-col md:grid-cols-3 w-full h-auto bg-[#303030] pt-5 sm:p-12  bottom-0'>
           <div className='flex flex-col items-center'>
               <h2 className='uppercase font-bold text-3xl text-white '>connect with us</h2>
               <div className='flex flex-row mt-5'>
-              <input type="text" name="complaint" value="" className='w-[300px] h-[80px] rounded-3xl bg-[#D9D9D9]'/>
-               <button className='w-[80px] h-[80px] bg-[#D9D9D9] rounded-full ml-3 flex items-center p-4'><GrSend className='text-4xl'/></button>   
+              <input type="text" name="complaint" value="" className='sm:w-[250px] md:w-[280px] h-[70px] rounded-3xl bg-[#D9D9D9]'/>
+               <button className='w-[70px] h-[70px] bg-[#D9D9D9] rounded-full ml-3 flex items-center p-4'><GrSend className='text-4xl'/></button>   
               </div>
               <div className='flex flex-row mt-5'>
                   <TiSocialFacebookCircular className='text-white text-6xl'/>

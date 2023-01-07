@@ -3,7 +3,9 @@ import React from 'react'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import './App.css'
+import Chat from './pages/Chat';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Providers from './pages/Providers';
 import Signup from './pages/Signup';
 import SingleProvider from './pages/SingleProvider';
@@ -21,6 +23,8 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="providers" element={<Providers />} />
         <Route path="provider" element={<SingleProvider />} />
+        <Route path="chat" element={<Chat />} />
+        <Route path="profile" element={<Profile/>}/>
       </Routes>
       </BrowserRouter>
   )

@@ -6,7 +6,7 @@ import ProvidersCard from '../components/ProvidersCard'
 
 const Providers = () => {
   return (
-    <div className='w-[100%]'>
+    <div className='w-full'>
           <Navebar />
           <div className='lg:max-w-[1600px] md:max-w-[900px] max-w-[400px] mx-auto'>
               <h2 className='font-Volkhov text-3xl mt-10 ml-10 mb-10'>wedding planners</h2>
