@@ -3,10 +3,10 @@ import { FcGoogle} from 'react-icons/fc'
 import { useNavigate } from 'react-router-dom'
 
 
-const Login = () => {
+const ProviderLogin = () => {
   const navigate = useNavigate()
   const signupHandle = () => {
-    navigate('/signup')
+    navigate('/providersignup')
   }
   return (
       <div className='w-full h-[1007px] grid lg:grid-cols-3 md:grid-cols-5 bg-white'>
@@ -28,4 +28,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default ProviderLogin

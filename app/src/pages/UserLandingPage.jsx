@@ -19,7 +19,7 @@ const UserLandingPage = () => {
       <Navbar />
      
       <Banner />
-      <div id='services' className='w-full pt-40'>
+      <div id='services' className='w-full pt-20 md:pt-40'>
       <h1 className='uppercase font-Volkhov m-7 text-2xl md:text-4xl lg:text-5xl text-center'>services</h1>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-[1300px] mx-auto'>
         <ServiceCard serviceClick={serviceClickHandler} url="../../public/serviceImages/bride-groom-getting-married_52683-32275.png" text="WEDDING PLANNERS"/>

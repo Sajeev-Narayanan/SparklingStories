@@ -16,11 +16,11 @@ const buttonhandle = () => {
   return (
     <div>
           <Navebar />
-          <div className='w-full h-[500px] bg-slate-300 flex justify-center'>
-              <div className='w-[400px] h-[400px] rounded-full bg-slate-300 border-8 border-[#E1EDF8] absolute top-[395px]'></div>
+          <div className='w-full h-[300px] lg:h-[500px] bg-slate-300 flex justify-center'>
+              <div className='lg:w-[400px] h-[230px] w-[230px] lg:h-[400px] rounded-full bg-slate-300 border-8 border-[#E1EDF8] absolute top-[260px] lg:top-[395px]'></div>
       </div>
       <div className='w-full mt-72 flex flex-col items-center justify-center mx-auto max-w-[900px]'>
-        <h2 className='text-5xl font-semibold font-Volkhov mb-16'>Company Name</h2>
+        <h2 className='lg:text-5xl text-3xl font-semibold font-Volkhov mb-16'>Company Name</h2>
         <p className='text-center text-lg'>An event management company is a business that specializes in organizing and executing events such as weddings, corporate events, concerts, festivals, and more. These companies typically handle all aspects of event planning, including budgeting, venue selection, logistics, marketing, and more. They work closely with clients to understand their needs and goals for the event, and then use their expertise and resources to bring the event to life. Some event management companies may also offer additional services such as event design, entertainment booking, catering, and event rentals. Overall, the goal of an event management company is to take the stress and hassle out of planning and executing a successful event.</p>
       </div>
       <div className='mx-auto pl-2 pr-2 max-w-[400px] md:max-w-[900px] lg:max-w-[1500px] mt-16'>

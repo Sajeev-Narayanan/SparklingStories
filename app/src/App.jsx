@@ -6,6 +6,9 @@ import './App.css'
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import ProviderLogin from './pages/providerPages/ProviderLogin';
+import ProviderProfile from './pages/providerPages/ProviderProfile';
+import ProviderSignup from './pages/providerPages/ProviderSignup';
 import Providers from './pages/Providers';
 import Signup from './pages/Signup';
 import SingleProvider from './pages/SingleProvider';
@@ -24,7 +27,12 @@ function App() {
         <Route path="providers" element={<Providers />} />
         <Route path="provider" element={<SingleProvider />} />
         <Route path="chat" element={<Chat />} />
-        <Route path="profile" element={<Profile/>}/>
+        <Route path="profile" element={<Profile />} />
+        
+        <Route path="providerlogin" element={<ProviderLogin />} />
+        <Route path="providersignup" element={<ProviderSignup />} />
+        <Route path="providerprofile" element={<ProviderProfile/>} />
+
       </Routes>
       </BrowserRouter>
   )

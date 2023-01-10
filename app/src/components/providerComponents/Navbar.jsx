@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {AiOutlineClose,AiOutlineMenu} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link';
+
 
 const Navebar = () => {
   
@@ -26,8 +26,9 @@ const Navebar = () => {
       <ul className='hidden md:flex'>
         <li onClick={homeHandle} className='p-4 font-bold cursor-pointer'>HOME</li>
         
-        <li className='p-4 font-bold cursor-pointer'><HashLink smooth to="/#services">SERVICES</HashLink></li>
+        
           <li onClick={profileHandle} className='p-4 font-bold cursor-pointer'>PROFILE</li>
+          <li className='p-4 font-bold cursor-pointer'>MESSAGES</li>
           <li className='p-4 font-bold cursor-pointer'>LOGOUT</li>
         </ul>
         <div className='block md:hidden' onClick={handleNav}>
@@ -39,8 +40,8 @@ const Navebar = () => {
         <ul className='p-4 uppercase'>
         <li onClick={homeHandle} className='p-4 border-b border-gray-600 font-bold cursor-pointer'>HOME</li>
         
-            <li  className='p-4 border-b border-gray-600 font-bold cursor-pointer'><HashLink smooth to="/#services">SERVICES</HashLink></li>
-            <li onClick={profileHandle} className='p-4 border-b border-gray-600 font-bold cursor-pointer'>PROFILE</li>
+            
+            <li className='p-4 border-b border-gray-600 font-bold cursor-pointer'>PROFILE</li>
             <li className='p-4 border-b border-gray-600 font-bold cursor-pointer'>LOGOUT</li>
         </ul>
         </div>
