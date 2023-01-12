@@ -3,9 +3,14 @@ import React from 'react'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import './App.css'
+import Adminlanding from './pages/adminPages/Adminlanding';
+import AdminLogin from './pages/adminPages/AdminLogin';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import EditProfile from './pages/providerPages/EditProfile';
+import Messages from './pages/providerPages/Messages';
+import ProviderChat from './pages/providerPages/ProviderChat';
 import ProviderLogin from './pages/providerPages/ProviderLogin';
 import ProviderProfile from './pages/providerPages/ProviderProfile';
 import ProviderSignup from './pages/providerPages/ProviderSignup';
@@ -31,7 +36,14 @@ function App() {
         
         <Route path="providerlogin" element={<ProviderLogin />} />
         <Route path="providersignup" element={<ProviderSignup />} />
-        <Route path="providerprofile" element={<ProviderProfile/>} />
+        <Route path="providerprofile" element={<ProviderProfile />} />
+        <Route path="editprofile" element={<EditProfile />} />
+        <Route path="messages" element={<Messages />} />
+        <Route path="providerchat" element={<ProviderChat />} />
+        
+
+        <Route path="adminlogin" element={<AdminLogin />} />
+        <Route path="adminlanding" element={<Adminlanding />} />
 
       </Routes>
       </BrowserRouter>
