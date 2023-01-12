@@ -5,6 +5,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import './App.css'
 import Adminlanding from './pages/adminPages/Adminlanding';
 import AdminLogin from './pages/adminPages/AdminLogin';
+import UserManagement from './pages/adminPages/UserManagement';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
@@ -44,6 +45,7 @@ function App() {
 
         <Route path="adminlogin" element={<AdminLogin />} />
         <Route path="adminlanding" element={<Adminlanding />} />
+        <Route path="usermanagement" element={<UserManagement />} />
 
       </Routes>
       </BrowserRouter>
