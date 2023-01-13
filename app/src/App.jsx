@@ -5,6 +5,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import './App.css'
 import Adminlanding from './pages/adminPages/Adminlanding';
 import AdminLogin from './pages/adminPages/AdminLogin';
+import EventManagers from './pages/adminPages/EventManagers';
+import Requests from './pages/adminPages/Requests';
 import UserManagement from './pages/adminPages/UserManagement';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
@@ -46,6 +48,8 @@ function App() {
         <Route path="adminlogin" element={<AdminLogin />} />
         <Route path="adminlanding" element={<Adminlanding />} />
         <Route path="usermanagement" element={<UserManagement />} />
+        <Route path="requests" element={<Requests />} />
+        <Route path="eventmanagers" element={<EventManagers/>} />
 
       </Routes>
       </BrowserRouter>
