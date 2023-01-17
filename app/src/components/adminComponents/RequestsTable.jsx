@@ -70,13 +70,13 @@ const RequestsTable = ({more}) => {
     const data = [
         {
             
-            email: 'Beetlejuice',
-			companyName: '1988',
+            email: 'starlink@gmail.com',
+			companyName: 'startlink',
         },
         {
             
-            email: 'Ghostbusters',
-			companyName: '1984',
+            email: 'moonlock@gmail.com',
+			companyName: 'moonlock',
         },
     ]
 

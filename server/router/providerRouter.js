@@ -4,6 +4,7 @@ const providerControllers = require("../controller/providerController");
 
 const providerRouter = express.Router();
 
-
+providerRouter.post("/signupEmail",providerControllers.signupWithEmail);
+providerRouter.post("/otpVerify",providerControllers.otpVerify);
 
 module.exports = providerRouter;

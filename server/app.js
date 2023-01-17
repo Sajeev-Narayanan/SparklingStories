@@ -23,6 +23,9 @@ app.use(cors());
 
 dbconfig();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 
 app.use(function (req, res, next) {
@@ -50,9 +53,9 @@ app.use("/admin", adminRoutes);
   
 
 
-app.get("*", (req, res, next) => {
-    res.send("ALL DONE 😍👍");
-  });
+// app.get("*", (req, res, next) => {
+//     res.send("ALL DONE 😍👍");
+//   });
   
   
 

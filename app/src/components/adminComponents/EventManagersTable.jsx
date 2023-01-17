@@ -71,13 +71,13 @@ const EventManagersTable = () => {
     const data = [
         {
             
-            email: 'Beetlejuice',
-			phone: '1988',
+            email: 'starlink@gmail.com',
+			phone: '7856311672',
         },
         {
             
-            email: 'Ghostbusters',
-			phone: '1984',
+            email: 'moonlock@gmail.com',
+			phone: '9447467293',
 		},
     ]
 
