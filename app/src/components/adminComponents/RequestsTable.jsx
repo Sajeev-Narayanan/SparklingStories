@@ -50,7 +50,9 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
     </>
 );
 
-const RequestsTable = ({more}) => {
+const RequestsTable = ({ more, data, select }) => {
+	
+	
 
     const columns = [
         {
@@ -59,26 +61,15 @@ const RequestsTable = ({more}) => {
         },
         {
             name: 'Company Name',
-            selector: row => row.companyName,
+            selector: row => row.companyname,
 		},
 		{
             name: '',
-			cell: row => (<button type="" className='bg-blue-500 hover:bg-blue -700 text-white font-bold py-2 px-4 rounded-full' onClick={()=>more(true)}>More</button>),
+			cell: row => (<button type="" className='bg-blue-500 hover:bg-blue -700 text-white font-bold py-2 px-4 rounded-full' onClick={() => { select(row._id);;more(true); }}>More</button>),
         },
     ];
     
-    const data = [
-        {
-            
-            email: 'starlink@gmail.com',
-			companyName: 'startlink',
-        },
-        {
-            
-            email: 'moonlock@gmail.com',
-			companyName: 'moonlock',
-        },
-    ]
+
 
     const [filterText, setFilterText] = useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);

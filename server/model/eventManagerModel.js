@@ -16,8 +16,10 @@ const providerSchema = new schema(
         place: { type: String, required: true, trim: true },
         mobile: { type: Number, trim: true ,required:true},
         verified: { type: Boolean },
+        approved: { type: Boolean },
         password: { type: String, trim: true,required:true },
-        certificate: { type: String,required:true, trim: true }
+        certificate: { type: String, required: true, trim: true },
+        refreshToken: [String],
   },
   { timestamps: true }
 );

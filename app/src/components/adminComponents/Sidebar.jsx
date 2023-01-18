@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { FaUsersCog,FaChessRook } from "react-icons/fa";
 import { VscRequestChanges } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
 const Sidebar = (props) => {
   const [open, setOpen] = useState(true);
- 
+ const navigate = useNavigate()
 
   return (
     <div className="flex top-0 sticky">
@@ -38,19 +39,19 @@ const Sidebar = (props) => {
             <li className={`${props.type=="user" && "bg-gray-700"} flex  rounded-md p-2 cursor-pointer hover:bg-gray-700  items-center gap-x-4 mb-5`}>
               <FaUsersCog className="text-3xl text-white"/>
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                <h1 className="text-white text-xl">User Management</h1>
+              <h1 onClick={() => { navigate('/usermanagement') }} className="text-white text-xl">User Management</h1>
               </span>
                   </li>
                   <li className={`${props.type=="req" && "bg-gray-700"} flex  rounded-md p-2 cursor-pointer hover:bg-gray-700  items-center gap-x-4 mb-5`}>
               <VscRequestChanges className="text-3xl text-white"/>
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                <h1 className="text-white text-xl">Requests</h1>
+                <h1 onClick={() => { navigate('/requests') }} className="text-white text-xl">Requests</h1>
               </span>
                   </li>
                   <li className={`${props.type=="event" && "bg-gray-700"} flex  rounded-md p-2 cursor-pointer hover:bg-gray-700  items-center gap-x-4 mb-5`}>
               <FaChessRook className="text-3xl text-white"/>
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                <h1 className="text-white text-xl">Service providers</h1>
+                <h1 onClick={() => { navigate('/eventmanagers') }} className="text-white text-xl">Service providers</h1>
               </span>
             </li>
           

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import styled from 'styled-components';
+import axios from '../../config/axios'
 
 const TextField = styled.input`
 	height: 50px;
@@ -51,7 +52,49 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
     	</>
     );
 
-const EventManagersTable = () => {
+const EventManagersTable = ({ data ,change,load }) => {
+
+	const blockHandler = (id) => {
+        try {
+            const value = { id:id };
+  
+            axios.post("/admin/blockManagers",value).then((response) => {
+              
+              if (response.status === 200) {
+				  console.log(response);
+				  load == false ? change(true) : change(false);
+                  
+              } else {
+                alert("SOMETHING WRONG!!!!!!!!!!!!!")
+              }
+            })
+          } catch (error) {
+            console.log(error);
+            alert("SOMETHING WRONG!!!!!!!!!!!!!")
+          }
+	}
+	
+	const unblockHandler = (id) => {
+        try {
+            const value = { id:id };
+  
+            axios.post("/admin/unblockManagers",value).then((response) => {
+              
+              if (response.status === 200) {
+				  console.log(response);
+				  
+                  load == false ? change(true) : change(false);
+              } else {
+                alert("SOMETHING WRONG!!!!!!!!!!!!!")
+              }
+            })
+          } catch (error) {
+            console.log(error);
+            alert("SOMETHING WRONG!!!!!!!!!!!!!")
+          }
+    }
+	
+
 
     const columns = [
         {
@@ -64,22 +107,11 @@ const EventManagersTable = () => {
 		},
 		{
             name: '',
-			cell: row => (<button type="" className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full' onClick={() => alert(row.email)}>Block</button>),
+			cell: row => (row.verified === true ?< button type="" className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full' onClick={() => blockHandler(row._id)}> block</button >:< button type="" className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full' onClick={() => unblockHandler(row._id)}> unblock</button >),
         },
     ];
     
-    const data = [
-        {
-            
-            email: 'starlink@gmail.com',
-			phone: '7856311672',
-        },
-        {
-            
-            email: 'moonlock@gmail.com',
-			phone: '9447467293',
-		},
-    ]
+    
 
     const [filterText, setFilterText] = useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);

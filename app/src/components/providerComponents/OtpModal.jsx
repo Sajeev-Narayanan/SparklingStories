@@ -1,33 +1,78 @@
 import React, { useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import OtpInput from "react18-input-otp";
-
-const OtpModal = ({ visible, onClose }) => {
-    const handleOnClose = (e) => {
-       if(e.target.id ==="container") onClose()
-    };
-
-    if (!visible) return null;
+import axios from "../../config/axios";
+import Countdown, { zeroPad } from 'react-countdown';
 
 
-    const [otp, setOtp] = useState("");
+const renderer = ({ hours, minutes, seconds }) => (
+  <span className='text-xl text-right'>
+    {zeroPad(minutes)}:{zeroPad(seconds)}
+  </span>
+);
+
+
+const OtpModal = ({ visible, onClose, phone }) => {
+  
+  
+  const handleOnClose = (e) => {
+    if(e.target.id ==="container") onClose()
+  };
+  
+  if (!visible) return null;
+  
+  const navigate = useNavigate();
+
+  const [otp, setOtp] = useState("");
+  const [error, setError] = useState(false);
+  const [resend, setresend] = useState(false);
+  
+  const resendHandler = () => {
+    setresend(true);
+  }
+  
   const handleChange = (enteredOtp) => {
     setOtp(enteredOtp);
   };
-  const [error, setError] = useState(false);
-  const otpSentButtonHandler = () => {
+  const otpSentButtonHandler = async() => {
     if (otp.length < 4) {
       console.log("invalid otp");
       setError(true);
     } else {
       setError(false);
       console.log("it is working with otp", otp);
-    //   navigate(-1);
+
+      const data = { mobile: phone, otp: otp };
+      try {
+        const response = await axios.post("/provider/otpVerify", data);
+        console.log("it is working with otp", response);
+        if (response.status === 201) {
+          navigate("/providerlogin")
+        } else {
+          setError(true);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+    
     }
   };
     
-  const otpResendHandler = () => {
-    console.log(userData);
+  const otpResendHandler = async() => {
+    const data = { mobile: phone };
+    try {
+      const response = await axios.post("/provider/resendOtp", data);
+      console.log("it is working with otp", response);
+      if (response.status === 201) {
+        setresend(false)
+      } else {
+        setError(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -38,7 +83,8 @@ const OtpModal = ({ visible, onClose }) => {
                       <button onClick={onClose} ><AiFillCloseCircle/></button>
               </div>
               <div className='h-full w-full flex items-center justify-center flex-col'>
-                  <h1 className='text-3xl font-medium mb-8'>Enter OTP</h1>
+          <h1 className='text-3xl font-medium mb-8'>Enter OTP</h1>
+          <p>OTP was send to { phone}</p>
                   <OtpInput
                        value={otp}
                        onChange={handleChange}
@@ -49,13 +95,11 @@ const OtpModal = ({ visible, onClose }) => {
                   >
                       
                   </OtpInput>
-                  {error && <p className="text-red-600 text-xl pt-5">invalid otp</p>}
-                  <p
-        className="text-xl text-right w-[65%] cursor-pointer underline mt-5"
-        onClick={otpResendHandler}
-      >
-        Resend Otp ?
-      </p>
+          {error && <p className="text-red-600 text-xl pt-5">invalid otp</p>}
+          <div className='w-full flex justify-end p-10'>
+          {!resend && <Countdown date={Date.now() + 100000} renderer={renderer} onComplete={resendHandler} className="text-xl text-right w-[65%]  mt-5" />}
+            {resend && <p className="text-xl text-right w-[65%] cursor-pointer underline mt-5" onClick={otpResendHandler} >Resend Otp ?</p>}
+            </div>
                   <button  onClick={otpSentButtonHandler} className='bg-green-500 hover:bg-green-600 rounded-3xl h-16 w-[60%] text-lg font-medium mt-6 p-4 uppercase'>done</button>
               </div>
               </div>

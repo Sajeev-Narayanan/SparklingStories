@@ -255,8 +255,8 @@ const ProviderSignup = () => {
 
   const signupHandle = () => { 
 
-    // const image = providerData.certificate;
-    console.log(image);
+    
+    
 
     const data = new FormData();
     data.append("file", image);
@@ -271,17 +271,7 @@ const ProviderSignup = () => {
       .then((data) => {
        
         const certificateUrl = data.url;
-        console.log("##############");
-        console.log(certificateUrl)
-
         
-          // setProviderData((prevState) => ({
-          //   ...prevState,
-          //   certificate: certificateUrl,
-          // }));
-      
-
-
 
 
         fetch(`http://localhost:8000/provider/signupEmail`, {
@@ -457,7 +447,7 @@ const ProviderSignup = () => {
         <img src="login.gif" alt="LOGIN" className='w-[100%] top-1 sticky' />
         <h1 className='font-Viaoda text-7xl text-gray-500 absolute top-2/3 top-0 bottom-64 sticky'>Make everything easy</h1>
     </div>
-    <OtpModal onClose={addServiceClose} visible={Optmodal}/>
+      <OtpModal onClose={addServiceClose} visible={Optmodal} phone={ providerData.phone} />
 
 </div>
   )

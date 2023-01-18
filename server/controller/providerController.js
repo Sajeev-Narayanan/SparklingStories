@@ -38,21 +38,9 @@ async function otpVerifyFunction(otp, mobile) {
   
 
 const signupWithEmail = async (req, res) => {
-    console.log("#####################")
-    console.log(req.body)
-    // const userExits = await User.findOne({
-    //   $and: [
-    //     {
-    //       $or: [{ email: req.body.providerData.email }, { mobile: req.body.providerData.phone }],
-    //     },
-    //     { verified: true },
-    //   ],
-    // });
-    // if (userExits) {
-    //   res
-    //     .status(202)
-    //     .json({ message: "email,or mobile  already excites, signup failed" });
-    // } else {
+   
+    
+  
       const hash = await bcrypt.hash(req.body.providerData.password, 5);
   
       const provider = new Provider({
@@ -65,13 +53,14 @@ const signupWithEmail = async (req, res) => {
           password: hash,
           certificate:req.body.certificateUrl,
         verified: false,
+        approved:false,
       });
         try {
-          console.log("&&&&&&&&&&&&")
+          
             await provider.save();
-            console.log("*************")
+            
             const response = await sendOtp(req.body.providerData.phone);
-            console.log("^^^^^^^^^^^^^^^^^^")
+         
         if (response.status === true) {
           res.status(201).json({
             message: `success`,
@@ -95,10 +84,11 @@ const signupWithEmail = async (req, res) => {
 const otpVerify = async (req, res) => {
     try {
       const { mobile, otp } = req.body;
+
       const response = await otpVerifyFunction(otp, mobile);
       console.log("response of otp", response);
       if (response.status === true) {
-        await User.updateOne({ mobile }, { verified: true });
+        await Provider.updateOne({ mobile }, { verified: true });
         res.status(201).json({ message: "otp verification successful" });
       } else {
         res.status(400).json({ message: " invalid otp verification " });
@@ -108,4 +98,29 @@ const otpVerify = async (req, res) => {
       res.status(400).json({ message: "otp failed", error: error.massage });
     }
   };
-  exports.otpVerify = otpVerify;
+exports.otpVerify = otpVerify;
+  
+
+const resendOtp = async (req, res) => {
+  console.log(req.body);
+  try {
+    const { mobile } = req.body;
+    const response = await sendOtp(mobile)
+
+    if (response.status === true) {
+      res.status(201).json({
+        message: `success`,
+        otpStatus: `sending to${mobile} `,
+      });
+    } else {
+      res.status(400).json({
+        message: `error`,
+        otpStatus: `sending to${mobile} `,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+        res.status(400).json({ message: "error", error });
+  }
+}
+exports.resendOtp = resendOtp;

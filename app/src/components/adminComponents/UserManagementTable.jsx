@@ -51,8 +51,8 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
     	</>
     );
 
-const UserManagementTable = () => {
-
+const UserManagementTable = ({data}) => {
+// console.log(props.value)
     const columns = [
         {
             name: 'Email',
@@ -60,7 +60,7 @@ const UserManagementTable = () => {
         },
         {
             name: 'Phone',
-            selector: row => row.phone,
+            selector: row => row.mobile,
 		},
 		{
             name: '',
@@ -68,18 +68,18 @@ const UserManagementTable = () => {
         },
     ];
     
-    const data = [
-        {
+    // const data = [
+    //     {
             
-            email: 'sanju@gmail.com',
-			phone: '8547022049',
-        },
-        {
+    //         email: 'sanju@gmail.com',
+	// 		phone: '8547022049',
+    //     },
+    //     {
             
-            email: 'shinas@gmail.com',
-			phone: '9767143582',
-		},
-    ]
+    //         email: 'shinas@gmail.com',
+	// 		phone: '9767143582',
+	// 	},
+    // ]
 
     const [filterText, setFilterText] = useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
