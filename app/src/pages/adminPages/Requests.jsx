@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import MoreRequest from '../../components/adminComponents/MoreRequest'
 import RequestsTable from '../../components/adminComponents/RequestsTable'
 import Sidebar from '../../components/adminComponents/Sidebar'
 import axios from '../../config/axios'
+import { currentToken } from '../../features/authSlice'
 
 const Requests = () => {
 
@@ -11,10 +13,16 @@ const Requests = () => {
   const [select, setselect] = useState();
   const [addService, setAddService] = useState(false)
 
+  const token = useSelector(currentToken)
+  console.log("token"+token)
+
+
   useEffect(() => {
     try {
   
-      axios.get("/admin/managerData").then((response) => {
+      axios.get("/admin/managerData",
+        { headers: { 'Content-Type':'application/json','Authorization' :`Bearer ${token}` } },
+      ).then((response) => {
         
         if (response.status === 200) {
          

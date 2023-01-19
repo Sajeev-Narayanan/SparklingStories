@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import axios from '../../config/axios'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { authChange } from '../../features/authSlice';
 
 const AdminLogin = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const {} = useSelector((state)=> state.auth) 
   
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordType, setPasswordType] = useState("password");
@@ -35,7 +38,11 @@ const AdminLogin = () => {
     try {
       const response = await axios.post("/admin/adminLogin", data);
       console.log("it is working ", response);
+      
+      const { accessToken, refreshToken, adminName } = response.data
+      
       if (response.status === 201) {
+        dispatch(authChange({accessToken,refreshToken,adminName}))
         navigate("/adminlanding")
       } else {
         setError(true);
