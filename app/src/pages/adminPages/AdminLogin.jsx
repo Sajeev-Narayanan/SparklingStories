@@ -8,7 +8,7 @@ import { authChange } from '../../features/authSlice';
 const AdminLogin = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const {} = useSelector((state)=> state.auth) 
+  // const {} = useSelector((state)=> state.auth) 
   
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordType, setPasswordType] = useState("password");

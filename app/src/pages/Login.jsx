@@ -1,6 +1,7 @@
 import React from 'react'
 import { FcGoogle} from 'react-icons/fc'
 import { useNavigate } from 'react-router-dom'
+import LoginWithGoogle from '../components/LoginWithGoogle'
 
 
 const Login = () => {
@@ -16,7 +17,8 @@ const Login = () => {
               <input type="password" name='email' value='' placeholder='Password' className='w-[90%] h-20 mt-10 text-3xl border-2 border-black rounded-3xl text-center'/>
               <button className='w-[60%] h-20 mt-10 text-3xl font-semibold border-2 border-black rounded-3xl text-center hover:scale-105 hover:bg-black hover:text-white'>Login</button>
               <p className='mt-5'>Register using <a className='text-blue-900 font-semibold cursor-pointer' onClick={signupHandle}>Signup</a></p>
-              <button className='w-[60%] h-20 mt-10 flex flex-row items-center pl-3 text-2xl font-medium border-2 border-black rounded-3xl text-center  hover:bg-black hover:text-white'><span className='w-[20%] h-20 flex items-center justify-center'><FcGoogle/></span>Login with google</button>
+        {/* <button className='w-[60%] h-20 mt-10 flex flex-row items-center pl-3 text-2xl font-medium border-2 border-black rounded-3xl text-center  hover:bg-black hover:text-white'><span className='w-[20%] h-20 flex items-center justify-center'><FcGoogle /></span>Login with google</button> */}
+        <LoginWithGoogle/>
           </div>
           <div className='hidden md:flex items-center flex-col md:col-span-3 lg:col-span-2'>
               <img src="../../public/login.gif" alt="LOGIN" className='w-[100%]' />
@@ -29,3 +31,7 @@ const Login = () => {
 }
 
 export default Login
+
+
+// G client id = 1046487536601-b55jhi0uh6edbfujs6pm5n68nmcu19r6.apps.googleusercontent.com
+// G client secret = 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

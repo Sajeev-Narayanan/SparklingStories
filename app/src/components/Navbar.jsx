@@ -2,8 +2,14 @@ import React,{useState} from 'react'
 import {AiOutlineClose,AiOutlineMenu} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
+import { useDispatch, useSelector } from 'react-redux'
+import { userData, userGoogleLoginChange } from '../features/userGoogleAuthSlice'
 
 const Navebar = () => {
+
+  const dispatch = useDispatch()
+  const user = useSelector(userData)
+  console.log(user);
   
   const navigate = useNavigate()
 
@@ -18,6 +24,11 @@ const Navebar = () => {
   const handleNav = () => {
     setNav(!nav)
   }
+
+  const handleLogout = (e) => {
+    dispatch(userGoogleLoginChange({ user: "" }))
+    navigate("/login")
+  }
   
   return (
     <div className='h-20 px-8 z-50 bg-white top-0 sticky shadow-md'>
@@ -28,7 +39,7 @@ const Navebar = () => {
         
         <li className='p-4 font-bold cursor-pointer'><HashLink smooth to="/#services">SERVICES</HashLink></li>
           <li onClick={profileHandle} className='p-4 font-bold cursor-pointer'>PROFILE</li>
-          <li className='p-4 font-bold cursor-pointer'>LOGOUT</li>
+          {user&& <li onClick={(e)=>{handleLogout(e)}} className='p-4 font-bold cursor-pointer'>LOGOUT</li>}
         </ul>
         <div className='block md:hidden' onClick={handleNav}>
           {!nav ? <AiOutlineClose size={30}/> : <AiOutlineMenu size={30}/>}
@@ -41,7 +52,7 @@ const Navebar = () => {
         
             <li  className='p-4 border-b border-gray-600 font-bold cursor-pointer'><HashLink smooth to="/#services">SERVICES</HashLink></li>
             <li onClick={profileHandle} className='p-4 border-b border-gray-600 font-bold cursor-pointer'>PROFILE</li>
-            <li className='p-4 border-b border-gray-600 font-bold cursor-pointer'>LOGOUT</li>
+            {user&& <li onClick={(e)=>{handleLogout(e)}} className='p-4 font-bold cursor-pointer'>LOGOUT</li>}
         </ul>
         </div>
         </div>

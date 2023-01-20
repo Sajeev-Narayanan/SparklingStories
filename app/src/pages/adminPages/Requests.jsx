@@ -14,16 +14,17 @@ const Requests = () => {
   const [addService, setAddService] = useState(false)
 
   const token = useSelector(currentToken)
-  console.log("token"+token)
+  
 
 
   useEffect(() => {
+   
     try {
   
       axios.get("/admin/managerData",
-        { headers: { 'Content-Type':'application/json','Authorization' :`Bearer ${token}` } },
+        { headers: {'Authorization' :`Bearer ${token}` } },
       ).then((response) => {
-        
+        console.log(response.data);
         if (response.status === 200) {
          
           setdata(response.data.data)
@@ -33,7 +34,7 @@ const Requests = () => {
         }
       })
     } catch (error) {
-      console.log(error);
+      console.log("&&&&&&&&&&&&&&&"+error);
       alert("SOMETHING WEONG!!!!!!!!!!!!!")
     }
     

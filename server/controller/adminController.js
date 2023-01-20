@@ -50,7 +50,7 @@ const userData = async (req, res) => {
 }
 
 const managerData = async (req, res) => {
-  if (req.user = "admin") {
+  if (req.user == "admin") {
     try {
       const managers = await Provider.find({ approved: false })
       // console.log(managers)
@@ -59,7 +59,7 @@ const managerData = async (req, res) => {
           message: 'success',
           data: managers,
         })
-      } else {
+      }  else {
         res.status(400).json({
           message: 'error',
         })
@@ -69,6 +69,11 @@ const managerData = async (req, res) => {
         message: 'error',
       })
     }
+  } else if (req.user == "expired") {
+    console.log("yes%%")
+    res.status(200).json({
+      message: 'expired',
+    })
   }
 }
 

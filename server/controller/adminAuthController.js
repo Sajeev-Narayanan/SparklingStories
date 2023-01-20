@@ -77,10 +77,10 @@ const adminLogin = async (req, res) => {
     }else{return res.sendStatus(403)}
 }
 
-function generateAccessToken(user) {
+const generateAccessToken = (user) => {
     
     return jwt.sign(user, process.env.ADMIN_ACCESS_SECRET, { expiresIn: '5m' })
-  }
+}
 
   
 
@@ -89,3 +89,4 @@ function generateAccessToken(user) {
 exports.token = token;
 exports.adminLogout = adminLogout;
 exports.adminLogin = adminLogin;
+exports.generateAccessToken = generateAccessToken;

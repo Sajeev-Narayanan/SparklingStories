@@ -1,8 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 
 import './App.css'
+import Layout from './components/Layout';
+import { userData } from './features/userGoogleAuthSlice';
+import UserRequireAuth from './features/UserRequireAuth';
+import userRequireAuth from './features/UserRequireAuth';
 import Adminlanding from './pages/adminPages/Adminlanding';
 import AdminLogin from './pages/adminPages/AdminLogin';
 import EventManagers from './pages/adminPages/EventManagers';
@@ -25,17 +30,23 @@ import UserLandingPage from './pages/UserLandingPage'
 
 function App() {
   
+  const user = useSelector(userData)
 
   return (
-    <BrowserRouter>
+    
     <Routes>
-        <Route path="/" element={<UserLandingPage />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+      <Route path='/' element={<Layout/>}>
+        <Route path="login"  element={user? <Navigate to="/"/> : <Login />} />
+        <Route path="signup" element={user? <Navigate to="/"/> :<Signup />} />
+        <Route element = {<UserRequireAuth/>}>
+        <Route index element={<UserLandingPage />} />
         <Route path="providers" element={<Providers />} />
         <Route path="provider" element={<SingleProvider />} />
         <Route path="chat" element={<Chat />} />
         <Route path="profile" element={<Profile />} />
+        </Route>
+        </Route>
+        
         
         <Route path="providerlogin" element={<ProviderLogin />} />
         <Route path="providersignup" element={<ProviderSignup />} />
@@ -52,8 +63,10 @@ function App() {
         <Route path="eventmanagers" element={<EventManagers/>} />
 
       </Routes>
-      </BrowserRouter>
+      
   )
 }
 
 export default App
+
+
